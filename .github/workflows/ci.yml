@@ -1,0 +1,45 @@
+name: CI Release
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  build:
+    name: Build and Test
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      debug: false
+      run_tests: false
+      bump_version: true
+      name: go-template
+  build_container:
+    name: Build Docker Container
+    uses: ./.github/workflows/build_container.yml
+    secrets: inherit
+    needs: build
+    with:
+      debug: false
+      enabled: false
+      name: go-template
+      image_name: cjlapao/go-template
+  publish_release:
+    name: Publish Release
+    uses: ./.github/workflows/publish_release.yml
+    secrets: inherit
+    needs: build
+    with:
+      name: go-template
+      debug: false
+      enabled: false
+  publish_helm:
+    name: Publish Helm
+    uses: ./.github/workflows/publish_helm.yml
+    secrets: inherit
+    needs: publish_release
+    with:
+      debug: false
+      enabled: false
+      name: go-template
+      url: go-template.carloslapao.com
