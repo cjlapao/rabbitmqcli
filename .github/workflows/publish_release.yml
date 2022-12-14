@@ -24,22 +24,27 @@ jobs:
       matrix:
         language: [ 'go' ]
     steps:
-    - name: Download tag
-      uses: actions/download-artifact@v1
+    - uses: actions/checkout@v2
       with:
-        name: tag_version
-    - name: Download tag changelog
-      uses: actions/download-artifact@v1
+        ref: ${{ github.head_ref }}
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
       with:
-        name: tag_changelog
+        go-version: 1.19
+
+    - name: 'Get Latest Tag'
+      id: get-latest-tag
+      uses: actions-ecosystem/action-get-latest-tag@v1
+      
     - name: Output
       shell: bash
       id: tag_output
       run: |
-        NEW_TAG_NAME=$(cat tag_version/tag.txt | sed 's/v//g')
-        NEW_TAG_CHANGELOG=$(cat tag_changelog/tag_changelog.txt)
+        NEW_TAG_NAME=$(echo ${{ steps.get-latest-tag.outputs.tag }} | sed 's/v//g')
+        echo $NEW_TAG_NAME
         echo "TAG_NAME=$NEW_TAG_NAME" >> $GITHUB_ENV
-        echo "TAG_CHANGELOG=$NEW_TAG_CHANGELOG" >> $GITHUB_ENV
+
     - name: Download linux build
       uses: actions/download-artifact@v1
       with:
