@@ -1,0 +1,10 @@
+version: '3.7'
+name: rabbitmqcli
+services:
+  go-template:
+    image: ${DOCKER_REGISTRY-}rabbitmqcli
+    ports:
+      - 5000:80
+    build:
+      context: '.'
+      dockerfile: 'dockerfile'

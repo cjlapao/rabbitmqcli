@@ -40,6 +40,6 @@ jobs:
     needs: publish_release
     with:
       debug: false
-      enabled: false
+      enabled: true
       name: rabbitmqcli
       url: rabbitmqcli.carloslapao.com
