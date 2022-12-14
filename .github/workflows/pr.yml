@@ -12,7 +12,7 @@ jobs:
     with:
       debug: false
       run_tests: false
-      bump_version: false
+      bump_version: true
       name: rabbitmqcli
   build_container:
     name: Build Docker Container

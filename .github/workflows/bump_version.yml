@@ -1,0 +1,38 @@
+name: Bump Version
+
+on:
+  delete:
+    
+jobs:
+  build:
+    name: Bump Version
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setting GH_TOKEN
+      if:  ${{ inputs.bump_version == true }}
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: echo "GH_TOKEN=${{ secrets.SU_TOKEN }}" >> $GITHUB_ENV
+
+    - name: Checkout for Bumping Version
+      if: ${{ inputs.bump_version == true}}
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: main
+        token: ${{ secrets.SU_TOKEN }}
+
+    - name: Bump package version
+      if: ${{ inputs.bump_version == true }}
+      run: |
+        git config --local user.name github-actions
+        git config --local user.email github-actions@github.com
+
+        NEW_TAG_NAME=$(echo ${{ steps.tag_version.outputs.new_tag }} | sed 's/v//g')
+        sed -i "s/^var ver = \"[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\"/var ver = \"$NEW_TAG_NAME\"/g" ./src/main.go
+        sed -i "s/^version: [[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/version: $NEW_TAG_NAME/g" ./charts/Chart.yaml
+        sed -i "s/^appVersion: \"[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\"/appVersion: \"$NEW_TAG_NAME\"/g" ./charts/Chart.yaml
+
+        git add .
+        git commit -m "🖉 Update to version of package"
+        git push
