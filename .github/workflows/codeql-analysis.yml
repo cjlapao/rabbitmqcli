@@ -13,10 +13,6 @@ name: "CodeQL"
 
 on:
   pull_request:
-    types:
-      - opened
-      - edited
-      - closed
     branches: [ main ]
   schedule:
     - cron: '41 2 * * 0'
