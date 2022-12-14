@@ -186,3 +186,9 @@ jobs:
       with:
         name: ${{ inputs.name }}_win_x64
         path: ./src/${{ inputs.name }}_win_x64.zip
+
+    - name: Upload Helm Chart
+      uses: actions/upload-artifact@v1
+      with:
+        name: helm_chart
+        path: ./charts
