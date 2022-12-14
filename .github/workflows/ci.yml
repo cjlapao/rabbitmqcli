@@ -22,7 +22,7 @@ jobs:
     needs: build
     with:
       debug: false
-      enabled: true
+      enabled: false
       name: rabbitmqcli
       image_name: cjlapao/rabbitmqcli
   publish_release:
@@ -33,7 +33,7 @@ jobs:
     with:
       name: rabbitmqcli
       debug: false
-      enabled: true
+      enabled: false
   publish_helm:
     name: Publish Helm
     uses: ./.github/workflows/publish_helm.yml

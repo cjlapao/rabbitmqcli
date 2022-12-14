@@ -154,7 +154,6 @@ jobs:
 
         cat ./src/main.go
         cat ./charts/Chart.yaml
-        echo "testing" > test.md
 
         git add .
         git commit -m "🖉 Update changelog with ${GITHUB_REF#refs/*/}"
