@@ -12,15 +12,4 @@ entries:
     urls:
     - https://rabbitmqcli.carloslapao.com/charts/go-template-0.0.9.tgz
     version: 0.0.9
-  http-load-tester:
-  - apiVersion: v2
-    appVersion: 0.0.1
-    created: "2022-12-14T15:17:49.672336773Z"
-    description: High performance load tester for http calls
-    digest: 892d234575513c3714dd8351bd3da028d8d08bfa78450725f763899f722bf236
-    name: http-load-tester
-    type: application
-    urls:
-    - https://rabbitmqcli.carloslapao.com/charts/http-load-tester-0.0.1.tgz
-    version: 0.0.1
 generated: "2022-12-14T15:17:49.670435856Z"
