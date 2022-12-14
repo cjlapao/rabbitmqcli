@@ -2,10 +2,10 @@ name: CI Release
 
 on:
   pull_request:
-    types:
-      - "closed"
-    branches: [ main ]
-    
+    types: 
+      - closed
+    branches: 
+      - main
 jobs:
   build:
     name: Build and Test
