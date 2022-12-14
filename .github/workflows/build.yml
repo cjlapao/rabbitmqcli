@@ -132,6 +132,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: echo "GH_TOKEN=${GITHUB_TOKEN}" >> $GITHUB_ENV
 
+    - name: 🤘 checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: main
+        token: ${{ env.GH_TOKEN }}
+
     - name: 🚀 changelog
       run: |
         git config --local user.name github-actions
