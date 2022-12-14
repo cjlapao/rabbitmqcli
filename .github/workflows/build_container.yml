@@ -50,7 +50,7 @@ jobs:
       uses: docker/login-action@v1 
       if: ${{ inputs.registry == ''}}
       with:
-        username: ${{ secrets.DOCKER_REGISTRY_USERNAME}}
+        username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
         password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
     - id: login-docker-registry
       if: ${{ inputs.registry != ''}}

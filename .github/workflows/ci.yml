@@ -1,8 +1,7 @@
 name: CI Release
 
 on:
-  # push:
-  pull_request:
+  push:
     branches: [ main ]
     
 jobs:
@@ -22,7 +21,7 @@ jobs:
     needs: build
     with:
       debug: false
-      enabled: false
+      enabled: true
       name: rabbitmqcli
       image_name: cjlapao/rabbitmqcli
   publish_release:
@@ -33,7 +32,7 @@ jobs:
     with:
       name: rabbitmqcli
       debug: false
-      enabled: false
+      enabled: true
   publish_helm:
     name: Publish Helm
     uses: ./.github/workflows/publish_helm.yml
@@ -41,6 +40,6 @@ jobs:
     needs: publish_release
     with:
       debug: false
-      enabled: false
+      enabled: true
       name: rabbitmqcli
       url: rabbitmqcli.carloslapao.com
