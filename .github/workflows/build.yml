@@ -153,7 +153,8 @@ jobs:
         sed -i "s/^appVersion: \"[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\"/appVersion: \"$NEW_TAG_NAME\"/g" ./charts/Chart.yaml
 
         cat ./src/main.go
-        cat ./src/charts/Chart.yaml
+        cat ./charts/Chart.yaml
+        echo "testing" > test.md
 
         git add .
         git commit -m "🖉 Update changelog with ${GITHUB_REF#refs/*/}"
