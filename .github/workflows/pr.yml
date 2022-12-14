@@ -13,7 +13,7 @@ jobs:
       debug: false
       run_tests: false
       bump_version: false
-      name: go-template
+      name: rabbitmqcli
   build_container:
     name: Build Docker Container
     uses: ./.github/workflows/build_container.yml
@@ -22,15 +22,15 @@ jobs:
     with:
       debug: false
       enabled: false
-      name: go-template
-      image_name: cjlapao/go-template
+      name: rabbitmqcli
+      image_name: cjlapao/rabbitmqcli
   publish_release:
     name: Publish Release
     uses: ./.github/workflows/publish_release.yml
     secrets: inherit
     needs: build
     with:
-      name: go-template
+      name: rabbitmqcli
       debug: false
       enabled: false
   publish_helm:
@@ -43,5 +43,5 @@ jobs:
     with:
       debug: false
       enabled: false
-      name: go-template
-      url: go-template.carloslapao.com
+      name: rabbitmqcli
+      url: rabbitmqcli.carloslapao.com
