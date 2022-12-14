@@ -146,3 +146,49 @@ jobs:
         git add .
         git commit -m "🖉 Update to version of package"
         git push
+
+    - name: Build Linux x64
+      id: build_linux_x64
+      env:
+        GOOS: linux
+        GOARCH: amd64
+      working-directory: src
+      run: go build -o ${{ inputs.name }}
+
+    - name: Zip Linux x64
+      id: zip_linux_x64
+      working-directory: src
+      run: |
+        zip --junk-paths ${{ inputs.name }}_linux_x64 ${{ inputs.name }}
+
+    - name: Upload linux build
+      uses: actions/upload-artifact@v1
+      with:
+        name: ${{ inputs.name }}_linux_x64
+        path: ./src/${{ inputs.name }}_linux_x64.zip
+
+    - name: Build Windows x64
+      id: build_windows_x64
+      env:
+        GOOS: windows
+        GOARCH: amd64
+      working-directory: src
+      run: go build -o ${{ inputs.name }}.exe
+
+    - name: Zip Windows x64
+      id: zip_windows_x64
+      working-directory: src
+      run: |
+        zip --junk-paths ${{ inputs.name }}_win_x64 ${{ inputs.name }}.exe
+
+    - name: Upload windows build
+      uses: actions/upload-artifact@v1
+      with:
+        name: ${{ inputs.name }}_win_x64
+        path: ./src/${{ inputs.name }}_win_x64.zip
+
+    - name: Upload Helm Chart
+      uses: actions/upload-artifact@v1
+      with:
+        name: helm_chart
+        path: ./charts
