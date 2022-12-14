@@ -130,7 +130,7 @@ jobs:
       if: env.GH_TOKEN == ''
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: echo "GH_TOKEN=${secrets.SU_TOKEN}" >> $GITHUB_ENV
+      run: echo "GH_TOKEN=${{ secrets.SU_TOKEN }}" >> $GITHUB_ENV
 
     - name: 🤘 checkout
       if: ${{ inputs.bump_version == true}}
