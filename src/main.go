@@ -10,7 +10,7 @@ import (
 	"github.com/cjlapao/common-go/version"
 )
 
-var ver = "0.0.2"
+var ver = "0.0.3"
 var services = execution_context.Get().Services
 
 func main() {
