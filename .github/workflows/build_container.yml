@@ -32,15 +32,22 @@ jobs:
         language: [ 'go' ]
     steps:
     - uses: actions/checkout@v2
-    - name: Download tag
-      uses: actions/download-artifact@v1
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
       with:
-        name: tag_version
+        fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
+    - name: 'Get next minor version'
+      id: semvers
+      uses: "WyriHaximus/github-action-next-semvers@v1"
+      with:
+        version: ${{ steps.previoustag.outputs.tag }}
     - name: Output
       shell: bash
       id: tag_output
       run: |
-        NEW_TAG_NAME=$(cat tag_version/tag.txt | sed 's/v//g')
+        NEW_TAG_NAME=$(echo ${{ steps.semvers.outputs.patch }} | sed 's/v//g')
+        echo $NEW_TAG_NAME
         echo "TAG_NAME=$NEW_TAG_NAME" >> $GITHUB_ENV
     - id: setup-docker
       name: Set up Docker Buildx
