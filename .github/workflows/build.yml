@@ -137,8 +137,12 @@ jobs:
         git config --local user.name github-actions
         git config --local user.email github-actions@github.com
 
-        git add ./src/main.go
-        git add ./charts/Chart.yaml
+        NEW_TAG_NAME=$(echo ${{ steps.tag_version.outputs.new_tag }} | sed 's/v//g')
+        sed -i "s/^var ver = \"[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\"/var ver = \"$NEW_TAG_NAME\"/g" ./src/main.go
+        sed -i "s/^version: [[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+/version: $NEW_TAG_NAME/g" ./charts/Chart.yaml
+        sed -i "s/^appVersion: \"[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\"/appVersion: \"$NEW_TAG_NAME\"/g" ./charts/Chart.yaml
+
+        git add .
         git commit -m "🖉 Update changelog with ${GITHUB_REF#refs/*/}"
         git push
     # - name: Upload changes
