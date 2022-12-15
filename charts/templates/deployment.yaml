@@ -1,61 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "go-template.fullname" . }}
-  labels:
-    {{- include "go-template.labels" . | nindent 4 }}
-spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  namespace: {{ .Values.namespace.name }}
+  name: {{ include "rabbitmqcli.fullname" .}}
+  labels: 
+    {{- include "rabbitmqcli.labels" . | nindent 4 }}
+spec: 
+  {{- if .Values.app.autoscaling.enabled }}
+  replicas: {{ .Values.app.autoscaling.startingReplicas }}
   {{- end }}
-  selector:
+  selector: 
     matchLabels:
-      {{- include "go-template.selectorLabels" . | nindent 6 }}
+    {{- include "rabbitmqcli.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      labels:
-        {{- include "go-template.selectorLabels" . | nindent 8 }}
+      labels: 
+        {{- include "rabbitmqcli.labels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      serviceAccountName: {{ include "go-template.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      containers: 
+      - name: servicebus-cli 
+        image: cjlapao/http-load-tester:latest
+        imagePullPolicy: {{ .Values.app.imagePullPolicy | quote }}
+        ports:
+        - containerPort: {{ .Values.app.port }}
+        env:
+        - name: HTTP_PORT
+          value: {{ .Values.app.port | quote }}
+
+        - name: API_PREFIX
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "rabbitmqcli.fullname" .}}
+              key: api_prefix
+
+        {{ if .Values.app.resources.enabled }}
+        resources:
+          requests:
+            cpu: {{ .Values.app.resources.requests.cpu | quote }}
+            memory: {{ .Values.app.resources.requests.memory | quote }}
+          limits:
+            cpu: {{ .Values.app.resources.limits.cpu | quote }}
+            memory: {{ .Values.app.resources.limits.memory | quote }}
+        {{ else }}
+        resources: {}
+        {{ end }}  
