@@ -20,11 +20,11 @@ RUN apk add sed
 # Enable this if you want to have private repositories to be collected
 # RUN git config --global url."https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
 
-WORKDIR /go/src/cjlapao/go-template
+WORKDIR /go/src/cjlapao/rabbitmqcli
 
 COPY . .
 
-WORKDIR /go/src/cjlapao/go-template/src
+WORKDIR /go/src/cjlapao/rabbitmqcli/src
 
 # Updating the main variable.
 RUN sed -i "s/^var ver = \"[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\"/var ver = \"${TAG_VERSION}\"/g" main.go
@@ -33,7 +33,7 @@ RUN sed -i "s/^var ver = \"[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\"/var ver
 RUN go get -d -v
 
 # Build the binary.
-RUN GIT_TERMINAL_PROMPT=1 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/go-template
+RUN GIT_TERMINAL_PROMPT=1 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/rabbitmqcli
 
 ############################
 # STEP 2 build a small image
@@ -43,9 +43,9 @@ FROM scratch
 # Copy SSL Certificates
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 # Copy our static executable.
-COPY --from=builder /go/bin/go-template /go/bin/go-template
+COPY --from=builder /go/bin/rabbitmqcli /go/bin/rabbitmqcli
 
 # Run the project binary.
-EXPOSE 80
+EXPOSE 5000
 
-ENTRYPOINT ["/go/bin/go-template"]
+ENTRYPOINT ["/go/bin/rabbitmqcli"]
