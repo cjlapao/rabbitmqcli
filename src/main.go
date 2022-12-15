@@ -11,7 +11,7 @@ import (
 	"github.com/cjlapao/rabbitmqcli/startup"
 )
 
-var ver = "0.0.0"
+var ver = "0.0.1"
 var services = execution_context.Get().Services
 
 func main() {
