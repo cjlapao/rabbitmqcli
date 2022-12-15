@@ -26,3 +26,5 @@ job_*.md
 !.vscode/tasks.json
 .local/
 bin/
+*.env
+*.override*
