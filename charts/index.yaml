@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  rabbitmq-cli:
+  - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2022-12-15T08:20:34.97837509Z"
+    description: RabbitMQ Client
+    digest: 428a5e9235ed1d5e16df0bee2cb66d0493cdb6f2aa1af86bdd04c62f383f563c
+    icon: https://common-go.carloslapao.com/images/icon.png
+    name: rabbitmq-cli
+    type: application
+    urls:
+    - https://rabbitmqcli.carloslapao.com/charts/rabbitmq-cli-0.0.3.tgz
+    version: 0.0.3
+generated: "2022-12-15T08:20:34.977209376Z"
