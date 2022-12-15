@@ -8,9 +8,10 @@ import (
 	"github.com/cjlapao/common-go/execution_context"
 	"github.com/cjlapao/common-go/helper"
 	"github.com/cjlapao/common-go/version"
+	"github.com/cjlapao/rabbitmqcli/startup"
 )
 
-var ver = "0.0.2"
+var ver = "0.0.0"
 var services = execution_context.Get().Services
 
 func main() {
@@ -44,10 +45,11 @@ func main() {
 }
 
 func Init() {
+	startup.Init()
 }
 
 func SetVersion() {
-	services.Version.Name = "GoLang Template"
+	services.Version.Name = "RabbitMQ Rest Client"
 	services.Version.Author = "Carlos Lapao"
 	services.Version.License = "MIT"
 	strVer, err := version.FromString(ver)
