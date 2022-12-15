@@ -3,7 +3,7 @@ entries:
   go-template:
   - apiVersion: v2
     appVersion: 0.0.9
-    created: "2022-12-15T07:30:10.981867732Z"
+    created: "2022-12-15T07:33:15.710258864Z"
     description: A Helm chart template for your application
     digest: 4efce5d32981c1af0adc3f36d4f32e0d0927a46cfb8f78a3d5c19234cc36995d
     icon: https://common-go.carloslapao.com/images/icon.png
@@ -14,9 +14,9 @@ entries:
     version: 0.0.9
   - apiVersion: v2
     appVersion: 0.0.2
-    created: "2022-12-15T07:30:10.98136633Z"
+    created: "2022-12-15T07:33:15.709698647Z"
     description: A Helm chart template for your application
-    digest: a144a18a093333d02f295245f6f3a29e781d5384f540198fede55c27ac9699b1
+    digest: 37359f9f8e11b34535d6a3cf7eb9787d9bafab6ed80f3da1fb52171414144c68
     icon: https://common-go.carloslapao.com/images/icon.png
     name: go-template
     type: application
@@ -25,7 +25,7 @@ entries:
     version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2022-12-15T07:30:10.980504327Z"
+    created: "2022-12-15T07:33:15.708753317Z"
     description: A Helm chart template for your application
     digest: 4ff5ee79f3babacfdd48dc1afcc3705a4382bbb34cd77d7470cc87aeeaea8a46
     icon: https://common-go.carloslapao.com/images/icon.png
@@ -34,4 +34,4 @@ entries:
     urls:
     - https://rabbitmqcli.carloslapao.com/charts/go-template-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-15T07:30:10.978928821Z"
+generated: "2022-12-15T07:33:15.70756668Z"
