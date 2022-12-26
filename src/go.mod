@@ -6,7 +6,7 @@ require (
 	github.com/cjlapao/common-go v0.0.36
 	github.com/cjlapao/common-go-cryptorand v0.0.4
 	github.com/cjlapao/common-go-rabbitmq v0.0.11
-	github.com/cjlapao/common-go-restapi v0.0.6
+	github.com/cjlapao/common-go-restapi v0.0.7
 	github.com/gorilla/mux v1.8.0
 )
 
