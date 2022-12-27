@@ -4,7 +4,7 @@ services:
   rabbitmqcli:
     image: ${DOCKER_REGISTRY-}rabbitmqcli
     ports:
-      - 55601:5000
+      - 5601:5000
     build:
       context: '.'
       dockerfile: 'dockerfile'

@@ -37,4 +37,6 @@ type ApiResponseErrorCode string
 
 const (
 	InvalidConnectionString ApiResponseErrorCode = "invalid_connection_string"
+	InvalidClient           ApiResponseErrorCode = "invalid_client"
+	BadRequest              ApiResponseErrorCode = "bad_request"
 )
