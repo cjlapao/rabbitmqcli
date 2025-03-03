@@ -1,7 +1,7 @@
 github.com/cjlapao/common-go v0.0.36 h1:5KvHs+1H4UOAAfZ8MFSA3DALo4JftAOixLq95SZxVUQ=
 github.com/cjlapao/common-go v0.0.36/go.mod h1:M3dzazLjTjEtZJbbxoA5ZDiGCiHmpwqW9l4UWaddwOA=
-github.com/cjlapao/common-go-cryptorand v0.0.4 h1:M4hBZlxXJJ4yY3itQzDCGYJH0rmXYd1nOa8T97EPPpc=
-github.com/cjlapao/common-go-cryptorand v0.0.4/go.mod h1:gUG7Bso/ZDD8tOoVmMvaYWMsglfAO9eg+p74OQH7Z2w=
+github.com/cjlapao/common-go-cryptorand v0.0.6 h1:0XpMIlu2Hbu5JEq4O/3RxUgo68h21mkElak5HxdjhuQ=
+github.com/cjlapao/common-go-cryptorand v0.0.6/go.mod h1:IR5isk32OIQ/yLbZUOmKR7vVo5OzTpfeX0xAagHsQyU=
 github.com/cjlapao/common-go-identity v0.0.5 h1:wn6mANUCn9Ib+Ms4YJnkkblxi22Y74Wn3nzUEdEeZZQ=
 github.com/cjlapao/common-go-identity v0.0.5/go.mod h1:YokX9wq7jX1DTGaW18kmDxn81E3R4m1MJP05PVTUhL0=
 github.com/cjlapao/common-go-rabbitmq v0.0.11 h1:I/0f99GO2t3pdy1kz5ig2LVjw+NTmpGnvM78GfFIbFs=
@@ -23,8 +23,8 @@ github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB7
 github.com/kr/pretty v0.1.0 h1:L/CwN0zerZDmRFUapSPitk6f+Q3+0za1rQkzVuMiMFI=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
-github.com/kr/text v0.1.0 h1:45sCR5RtlFHMR4UwH9sdQ5TC8v0qDQCHnXt+kaKSTVE=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
+github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=
 github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
 github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
 github.com/mattn/go-colorable v0.1.13/go.mod h1:7S9/ev0klgBDR4GtXTXX8a3vIGJpMovkB8vQcUbaXHg=
