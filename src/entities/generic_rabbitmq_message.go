@@ -20,7 +20,12 @@ func (m GenericRabbitMqMessage) CorrelationID() string {
 		return m.MsgCorrelationId
 	}
 
-	return cryptorand.GetRandomString(45)
+	id, err := cryptorand.GetRandomString(45)
+	if err != nil {
+		return ""
+	}
+
+	return id
 }
 
 func (m GenericRabbitMqMessage) Domain() string {
