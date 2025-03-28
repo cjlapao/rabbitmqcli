@@ -7,7 +7,7 @@ toolchain go1.23.5
 require (
 	github.com/cjlapao/common-go v0.0.48
 	github.com/cjlapao/common-go-cryptorand v0.0.6
-	github.com/cjlapao/common-go-rabbitmq v0.0.11
+	github.com/cjlapao/common-go-rabbitmq v0.0.17
 	github.com/cjlapao/common-go-restapi v0.0.12
 	github.com/gorilla/mux v1.8.1
 )
@@ -25,7 +25,7 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/pascaldekloe/jwt v1.12.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/rabbitmq/amqp091-go v1.5.0 // indirect
+	github.com/rabbitmq/amqp091-go v1.10.0 // indirect
 	golang.org/x/sys v0.31.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

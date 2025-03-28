@@ -45,7 +45,7 @@ func SendRQMPersistentMessageController(w http.ResponseWriter, r *http.Request) 
 		MsgBody:          message.Data,
 	}
 
-	var sendMessage sender.SenderMessage
+	var sendMessage sender.Message
 
 	if message.Transient {
 		if message.RoutingKey != "" {
