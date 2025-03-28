@@ -1,6 +1,6 @@
 module github.com/cjlapao/rabbitmqcli
 
-go 1.18
+go 1.23
 
 require (
 	github.com/cjlapao/common-go v0.0.36

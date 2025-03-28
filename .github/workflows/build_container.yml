@@ -20,7 +20,7 @@ on:
       registry:
         required: false
         type: string
-        default: ""
+        default: ''
 jobs:
   build_containers:
     if: ${{ inputs.enabled }}
@@ -29,49 +29,49 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'go' ]
+        language: ['go']
     steps:
-    - uses: actions/checkout@v2
-      
-    - name: 'Get Latest Tag'
-      id: get-latest-tag
-      uses: actions-ecosystem/action-get-latest-tag@v1
-      
-    - name: Output
-      shell: bash
-      id: tag_output
-      run: |
-        NEW_TAG_NAME=$(echo ${{ steps.get-latest-tag.outputs.tag }} | sed 's/v//g')
-        echo $NEW_TAG_NAME
-        echo "TAG_NAME=$NEW_TAG_NAME" >> $GITHUB_ENV
+      - uses: actions/checkout@v4
 
-    - id: setup-docker
-      name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-    - id: login-docker
-      name: Login to DockerHub
-      uses: docker/login-action@v1 
-      if: ${{ inputs.registry == ''}}
-      with:
-        username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
-        password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-    - id: login-docker-registry
-      if: ${{ inputs.registry != ''}}
-      name: Login to DockerHub
-      uses: docker/login-action@v1 
-      with:
-        registry: ${{ inputs.registry }}
-        username: ${{ secrets.DOCKER_REGISTRY_USERNAME}}
-        password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-    - id: docker_build
-      name: Build and push
-      uses: docker/build-push-action@v2
-      with:
-        push: true
-        build-args: |
-          TAG_VERSION=${{ env.TAG_NAME }}
-        tags: |
-          ${{ inputs.image_name }}:${{ env.TAG_NAME }}
-          ${{ inputs.image_name }}:latest
-    - name: Image digest
-      run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: 'Get Latest Tag'
+        id: get-latest-tag
+        uses: actions-ecosystem/action-get-latest-tag@v1
+
+      - name: Output
+        shell: bash
+        id: tag_output
+        run: |
+          NEW_TAG_NAME=$(echo ${{ steps.get-latest-tag.outputs.tag }} | sed 's/v//g')
+          echo $NEW_TAG_NAME
+          echo "TAG_NAME=$NEW_TAG_NAME" >> $GITHUB_ENV
+
+      - id: setup-docker
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - id: login-docker
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        if: ${{ inputs.registry == ''}}
+        with:
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+      - id: login-docker-registry
+        if: ${{ inputs.registry != ''}}
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ inputs.registry }}
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME}}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+      - id: docker_build
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          build-args: |
+            TAG_VERSION=${{ env.TAG_NAME }}
+          tags: |
+            ${{ inputs.image_name }}:${{ env.TAG_NAME }}
+            ${{ inputs.image_name }}:latest
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
