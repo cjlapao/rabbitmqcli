@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.23.5
 
 require (
-	github.com/cjlapao/common-go v0.0.48
+	github.com/cjlapao/common-go v0.0.49
 	github.com/cjlapao/common-go-cryptorand v0.0.6
 	github.com/cjlapao/common-go-rabbitmq v0.0.17
 	github.com/cjlapao/common-go-restapi v0.0.12
