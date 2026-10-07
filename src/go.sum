@@ -10,8 +10,8 @@ github.com/cjlapao/common-go-identity-oauth2 v0.0.6 h1:3OR2QaXlX3gfe0gV90401F3VU
 github.com/cjlapao/common-go-identity-oauth2 v0.0.6/go.mod h1:s5kDaZCLPGuHUSsp1iS4PVGFx2/DNwD8oBA8o5am5vc=
 github.com/cjlapao/common-go-logger v0.0.10 h1:bhL7ibXo7yb1IjcaSPyFNxeX0c2p5Br/yIwQ0aeyYtQ=
 github.com/cjlapao/common-go-logger v0.0.10/go.mod h1:HTmIKmw8K7eLY5WsoI4fLLNiFGAkk5LGJrYjYt3W5/Y=
-github.com/cjlapao/common-go-rabbitmq v0.1.0 h1:0ts1eA3ZnGK6UwyCAWt75r3tqQyeKWEcBYnOWqUBPto=
-github.com/cjlapao/common-go-rabbitmq v0.1.0/go.mod h1:Jyfac75q6KZO18DYSOvvYQAHe/9Pexo4beGQIKPLBVU=
+github.com/cjlapao/common-go-rabbitmq v0.1.1 h1:Fk9DNKgNfyP4tHR/kZfNkkqk3aXnAK4UV9mu9yB6kv0=
+github.com/cjlapao/common-go-rabbitmq v0.1.1/go.mod h1:z01niuKdMnGd6AfNtomSweBbR15vr1aqGbDQlNza0EM=
 github.com/cjlapao/common-go-restapi v0.0.12 h1:71VGcwub8EeqchBTXCwYH2w8BpkRfQZGTZ0rXUFL3Rs=
 github.com/cjlapao/common-go-restapi v0.0.12/go.mod h1:u5PjwfidVdqnvb8eVZskjoEBeM2NPIA3vl9MB12YbFI=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

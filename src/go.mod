@@ -5,7 +5,7 @@ go 1.25
 require (
 	github.com/cjlapao/common-go v0.0.49
 	github.com/cjlapao/common-go-cryptorand v0.0.6
-	github.com/cjlapao/common-go-rabbitmq v0.1.0
+	github.com/cjlapao/common-go-rabbitmq v0.1.1
 	github.com/cjlapao/common-go-restapi v0.0.12
 	github.com/gorilla/mux v1.8.1
 )
